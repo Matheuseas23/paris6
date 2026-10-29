@@ -175,7 +175,12 @@ h2{ margin:0 0 .5em; font:400 clamp(2rem,4.6vw,3.3rem)/1.08 var(--display); colo
 .casa p{ max-width:38rem; margin:0 0 1.15em; }
 .sig{ margin:.9em 0 0; font:400 clamp(2rem,5vw,3rem)/1.1 var(--script); color:var(--accent); }
 .ficha{ margin:0; border-top:1px solid var(--rule); }
-.ficha div{ display:grid; grid-template-columns:7.8rem 1fr; gap:12px; padding:16px 0; border-bottom:1px solid var(--rule); }
+.ficha div{ display:grid; grid-template-columns:9.5rem 1fr; gap:12px; padding:16px 0; border-bottom:1px solid var(--rule); }
+/* a coluna dos títulos acompanha o mais largo ("Funcionamento"), sem invadir o texto ao lado */
+@supports (grid-template-columns:subgrid){
+  .ficha{ display:grid; grid-template-columns:max-content minmax(0,1fr); column-gap:16px; }
+  .ficha div{ grid-column:1 / -1; grid-template-columns:subgrid; }
+}
 .ficha dt{ font-weight:600; color:var(--accent); }
 .ficha dd{ margin:0; }
 .ficha-box{ background:var(--bg-2); padding:clamp(18px,3vw,32px); position:relative; }
@@ -282,7 +287,8 @@ dialog .x{ margin-top:1.1em; width:100%; }
   .brand .name{ display:none; }
   .nav{ display:none; }
   .burger{ display:block; }
-  .ficha div{ grid-template-columns:6.4rem 1fr; }
+  .ficha div{ grid-template-columns:8.6rem 1fr; }
+  @supports (grid-template-columns:subgrid){ .ficha div{ grid-template-columns:subgrid; } .ficha{ column-gap:14px; } }
   .strip li{ gap:18px; } .strip ul{ gap:8px 18px; }
 }
 @media (max-width:420px){
