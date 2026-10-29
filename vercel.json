@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    { "source": "/apple-touch-icon-precomposed.png", "destination": "/apple-touch-icon.png" }
+  ],
+  "headers": [
+    {
+      "source": "/videos/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    }
+  ]
+}

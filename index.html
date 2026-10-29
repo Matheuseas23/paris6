@@ -5,8 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Paris 6 Classique, Rua Haddock Lobo, 1240</title>
 <meta name="description" content="Paris 6 Classique: a primeira casa do Paris 6, aberta 24 horas na Rua Haddock Lobo, em São Paulo. Pratos, reservas, delivery direto e como chegar.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#3b0f0b">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Paris 6 Classique, Rua Haddock Lobo, 1240">
+<meta property="og:description" content="A primeira casa do Paris 6, aberta 24 horas na Rua Haddock Lobo, em São Paulo. Pratos, reservas, delivery direto e como chegar.">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
@@ -649,6 +655,7 @@ dialog .x{ margin-top:1.1em; width:100%; }
   function startHero(){
     if(started||reduce.matches){ return; }
     started=true;
+    if(!lista().length){ fallback(); return; }
     players[front].classList.add('on'); setCap(idx);
     if(!userPaused){ play(players[front]); }
     setTimeout(function(){ if(!played){ fallback(); } },4000);
@@ -665,7 +672,7 @@ dialog .x{ margin-top:1.1em; width:100%; }
   }
 
   if(reduce.matches){ hero.classList.add('fb'); hero.classList.add('go'); pauseBtn.hidden=true; }
-  else { prep(players[0],0); }
+  else if(lista().length){ prep(players[0],0); }
   if(portrait.addEventListener){ portrait.addEventListener('change',reload); }
 
   /* cabeçalho transparente enquanto a home (vídeos) está na tela */
